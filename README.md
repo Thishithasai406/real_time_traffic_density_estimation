@@ -97,7 +97,7 @@ Traffic_Density_Estimation/
 1. **Clone the repository**
    ```bash
    https://github.com/Thishithasai406/real_time_traffic_density_estimation.git
-  cd real_time_traffic_density_estimation
+   cd real_time_traffic_density_estimation
    ```
 
 2. **Create a virtual environment** (recommended)
@@ -191,3 +191,4 @@ Contributions are always welcome! If you spot a bug, have an idea for improvemen
 ---
 
 **Built with ❤️ for Smart Transportation & Urban Planning**
+
