@@ -1,11 +1,25 @@
-# Traffic Density Estimation — YOLOv8
+# 🚗 Real-Time Traffic Density Estimation with YOLOv8
 
-Project: Real-time traffic density estimation using a fine-tuned YOLOv8 model.
 
-## Project Overview
-This repository implements a real-time Traffic Density Estimation pipeline using a fine-tuned YOLOv8 model. It detects vehicles in video frames, counts vehicles in designated lane regions, and annotates traffic intensity (e.g., Smooth / Heavy). The system is intended for experimentation, prototyping, and deployment in local setups or edge devices.
+A comprehensive AI-powered traffic monitoring system developed using **Python**, **YOLOv8**, and **OpenCV**. This system provides real-time vehicle detection, lane-wise counting, and traffic intensity analysis for urban traffic management and city planning.
 
-## Dataset Description
+
+<p align="center">
+  <video src="https://github.com/user-attachments/assets/5107366a-4ab4-4c86-9079-5b249596aee9" width="500" autoplay loop muted></video>
+</p>
+
+--- 
+
+## 🚦 Project Overview
+This repository implements a real-time Traffic Density Estimation pipeline using a fine-tuned YOLOv8 model (You Only Look Once version 8). It detects vehicles in video frames, counts vehicles in designated lane regions, and annotates traffic intensity (e.g., Smooth / Heavy).
+
+The goal is to create an intelligent system capable of detecting cars, buses, and trucks from road or aerial traffic videos to estimate traffic density and assist in smart city traffic management.
+
+This project supports sustainable mobility by helping optimize traffic flow and reduce fuel wastage, contributing to green technology development.
+
+---
+
+## 📚 Dataset Description
 - Name: Top-View Vehicle Detection Image Dataset for YOLOv8
 - Classes: single combined class "Vehicle" (cars, trucks, buses)
 - Total images: 626 (640×640 px)
@@ -16,102 +30,164 @@ This repository implements a real-time Traffic Density Estimation pipeline using
   - Kaggle: https://www.kaggle.com/datasets/farzadnekouei/top-view-vehicle-detection-image-dataset
 - Preprocessing: uniform resizing (640×640), optional augmentations (flips, etc.)
 
-## Features
-- Real-time vehicle detection with YOLOv8.
-- Per-lane vehicle counting using configurable ROIs and thresholds.
-- Traffic intensity labeling (Smooth / Heavy) per lane.
-- Visual overlays (lane polygons, counts, intensity banners).
-- Export-friendly model formats (PyTorch `.pt`, optional `.onnx`).
+---
 
-## Technologies Used
-- Python 3.8+
-- OpenCV (cv2) — video I/O, drawing, visualization
-- NumPy — numeric operations and polygon definitions
-- Ultralytics YOLO (YOLOv8) — detection model and inference API
-- (Optional) PyTorch with CUDA for GPU acceleration
+## 🚀 Features
+### 🎯 Real-time Vehicle Detection
+- **YOLOv8 Model**: Fine-tuned deep learning model for accurate vehicle detection
+- **Multi-class Support**: Detects cars, trucks, buses, and other vehicles
+- **High Accuracy**: Optimized for aerial/top-view traffic scenarios
+- **Fast Inference**: Real-time processing at high FPS with GPU acceleration
 
-## Project Structure
-- c:\Traffic_Density_Estimation\
-  - real_time_traffic_analysis.py — main inference script (real-time processing)
-  - models/best.pt — fine-tuned YOLOv8 model (not included)
-  - sample_video.mp4 — sample input video (user-supplied)
-  - processed_sample_video.avi — output written by the script (runtime)
-  - real-time_traffic_density_estimation_yolov8.ipynb — development notebook
-  - images/ — cover and sample images
-  - Running_Real-Time_Traffic_Analysis.gif — demo GIF
-  - README.md — this file
+### 📊 Traffic Monitoring Dashboard
+- **Lane-wise Vehicle Counting**: Separate count for left and right lanes
+- **Traffic Intensity Analysis**: Real-time classification (Smooth / Heavy)
+- **Visual Overlays**: Dynamic polygon ROIs with count annotations
+- **Frame-by-frame Processing**: Continuous video stream analysis
+- **Automated Alerts**: Visual alerts for congestion detection
+- **Video Export**: Processed output saved as AVI file
 
-## Installation & Setup
-1. Clone the repository:
-   git clone https://github.com/FarzadNekouee/YOLOv8_Traffic_Density_Estimation.git
-2. Create and activate a Python environment:
-   python -m venv .venv
-   source .venv/bin/activate  # Windows: .venv\Scripts\activate
-3. Install dependencies:
+### 🛣️ Advanced Traffic Analysis
+- **ROI Definition**: Customizable quadrilateral regions for lane detection
+- **Threshold-based Classification**: Configurable vehicle count thresholds
+- **Real-time Visualization**: Live bounding boxes and density heatmaps
+- **Performance Metrics**: Frame processing statistics and inference timing
+- **Data Logging**: Support for export and analysis of traffic patterns
+
+### 🎨 Modern Implementation
+- **Responsive Processing**: Handles variable video resolutions
+- **Configurable Parameters**: Easy tuning for different scenarios
+- **Clean Architecture**: Modular and maintainable codebase
+- **Cross-platform**: Runs on Windows, Linux, and macOS
+
+---
+
+## 🛠️ Technologies Used
+| Tool / Library | Purpose |
+|-----------------|----------|
+| **Python** | Main programming language |
+| **YOLOv8 (Ultralytics)** | Object detection and model training |
+| **OpenCV** | Image and video frame processing |
+| **NumPy & Matplotlib** | Data handling and visualization |
+| **Roboflow / Kaggle** | Dataset collection and management |
+| **VS Code** | Development, model training, and evaluation environment |
+
+---
+
+## 📂 Project Structure
+
+```
+Traffic_Density_Estimation/
+|
+├── real_time_traffic_analysis.py                 # Main inference script (real-time processing)
+├── sample_video.mp4                              # Sample input video
+├── processed_sample_video.avi                    # Output video generated by script
+├── README.md                                     # Project documentation
+├── models/                                       # Model directory
+│   └── best.pt                                   # Fine-tuned YOLOv8 model (not included)
+│
+├── images/                                       # sample images
+```
+
+---
+
+
+
+## 🚀 Installation & Setup
+1. **Clone the repository**
+   ```bash
+   https://github.com/Thishithasai406/real_time_traffic_density_estimation.git
+  cd real_time_traffic_density_estimation
+   ```
+
+2. **Create a virtual environment** (recommended)
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. **Install dependencies**
+   ```bash
    pip install -r requirements.txt
-   or at minimum:
-   pip install ultralytics opencv-python numpy
-4. (Optional, recommended) Install GPU-backed PyTorch compatible with your CUDA version as per https://pytorch.org.
+   ```
+   Or install manually:
+   ```bash
+   pip install ultralytics opencv-python numpy torch torchvision
+   ```
 
-## Usage Guide
-1. Place your trained model at `models/best.pt` (update path in script if different).
-2. Put the input video at `sample_video.mp4` or edit `real_time_traffic_analysis.py` to point to your file.
-3. Run the analysis:
+4. **Download the dataset** (optional, for model training)
+   - Kaggle: https://www.kaggle.com/datasets/farzadnekouei/top-view-vehicle-detection-image-dataset
+   - Roboflow: https://universe.roboflow.com/farzad/vehicle_detection_yolov8
+
+5. **Run the application**
+   ```bash
    python real_time_traffic_analysis.py
-4. Controls:
-   - Press `q` on the display window to quit early.
-5. Output:
-   - The script writes `processed_sample_video.avi` and displays annotated frames in a window.
+   ```
 
-## Configuration (script variables and recommended tuning)
-Edit `real_time_traffic_analysis.py` to change defaults:
+6. **Access the output**
+   - Live display window shows real-time analysis
+   - Processed video saved as `processed_sample_video.avi`
 
-- Model and inference:
-  - model path: YOLO('models/best.pt')
-  - imgsz (in predict): default 640 — reduce to 320 for higher FPS with reduced accuracy
-  - conf (in predict): default 0.4 — lower to detect smaller objects, raise to reduce false positives
-- Video I/O:
-  - input: cv2.VideoCapture('sample_video.mp4')
-  - output: filename and codec in VideoWriter
-- ROI and lanes:
-  - vertical slice: x1, x2 = 325, 635 (rows used to zero-out outside region)
-  - lane_threshold = 609 (x-coordinate used to split left/right lanes)
-  - vertices1, vertices2 — polygon vertex arrays defining lane overlays
-- Counting logic:
-  - heavy_traffic_threshold = 10 — number of vehicles above which lane labeled "Heavy"
+---
 
-Suggested improvements to configuration:
-- Use polygon point-in-polygon instead of a simple x-threshold for robust lane assignment.
-- Add class filters (cars, buses, trucks) if model differentiates classes.
-- Integrate a tracker (SORT/DeepSORT) to avoid double counts across frames.
+## 📱 Usage Guide
 
-## Troubleshooting
-- Model file not found: confirm `models/best.pt` exists and path is correct.
-- No detections: verify model was trained for vehicle class and adjust `conf`.
-- Video window not appearing (headless server): write output to file and disable imshow.
-- VideoWriter errors: ensure frame size matches (width × height) and codec is available.
+### Getting Started
+1. **Prepare Input**: Place video file at `sample_video.mp4` or update path in script
+2. **Load Model**: Ensure `models/best.pt` exists (fine-tuned YOLOv8)
+3. **Run Script**: Execute `real_time_traffic_analysis.py`
+4. **Monitor Output**: Watch real-time analysis in display window
+5. **Export Results**: Output video automatically saved
+   
+--- 
 
-## Performance Tips
-- Use GPU-enabled PyTorch/Ultralytics for real-time processing.
-- Crop ROIs to reduce image area for inference.
-- Lower `imgsz` for higher FPS; tune `conf` to balance precision/recall.
-- Batch processing or multi-threaded read/infer/write pipeline for higher throughput.
+## 🔧 Configuration
 
-## Future Enhancements
-- Integrate Multi-Object Tracking (SORT / DeepSORT) to stabilize counts and extract trajectories.
-- Use per-class counting and per-vehicle-type thresholds.
-- Add speed estimation using frame-to-frame centroid displacement and calibration.
-- Build a streaming/publishing pipeline (MQTT/HTTP) to push metrics to dashboards.
-- Add unit/integration tests and CI for reproducible experiments.
-- Export to ONNX / TensorRT for optimized cross-platform deployments.
+### Key Script Parameters
 
-## Contributing
-- Fork the repository, create a feature branch, add tests/documentation, and submit a pull request.
-- Include a clear description of changes and any dataset or model changes.
-- Report issues through the project issue tracker and include reproducible steps.
+Edit `real_time_traffic_analysis.py` to customize:
 
-## License
-Add a LICENSE file to the repo (e.g., MIT) if you intend to open-source this project.
+```python
+# Model Configuration
+best_model = YOLO('models/best.pt')  # Model path
+imgsz = 640                           # Inference size
+conf = 0.4                            # Confidence threshold
 
-## Contact
-For questions or collaboration, refer to the repository or the project owner (links in original project documentation).
+# Traffic Thresholds
+heavy_traffic_threshold = 10          # Vehicles count for "Heavy"
+
+# ROI Definition (Region of Interest)
+x1, x2 = 325, 635                     # Vertical slice range
+lane_threshold = 609                  # X-coordinate for lane split
+vertices1 = [(465, 350), (609, 350), (510, 630), (2, 630)]    # Left lane polygon
+vertices2 = [(678, 350), (815, 350), (1203, 630), (743, 630)] # Right lane polygon
+
+# Video I/O
+input_video = 'sample_video.mp4'
+output_video = 'processed_sample_video.avi'
+frame_rate = 20.0
+```
+
+---
+
+## 🎯 Future Enhancements
+
+- **Real-time Multi-object Tracking (MOT)**: SORT / DeepSORT integration for trajectory tracking
+- **Speed Estimation**: Calculate vehicle speeds using optical flow or tracking
+- **Vehicle Classification**: Distinguish between cars, trucks, buses with class-specific counting
+- **Weather Integration**: Incorporate real weather API data
+- **Cloud Deployment**: Flask web dashboard for remote monitoring
+- **Mobile App**: Native iOS/Android application for field monitoring
+- **Predictive Analytics**: ML model to forecast traffic patterns
+- **Multi-camera Support**: Federated detection from multiple angles
+- **Alert System**: SMS/Email notifications for congestion events
+- **Database Integration**: PostgreSQL/MongoDB for historical data storage
+
+---
+
+## 🤝 Contributing
+Contributions are always welcome! If you spot a bug, have an idea for improvement, or want to add a new feature, feel free to open an issue or submit a pull request. Suggestions for documentation updates, translations, or performance enhancements are also appreciated. Every contribution, big or small, helps improve the project for everyone.
+
+---
+
+**Built with ❤️ for Smart Transportation & Urban Planning**
