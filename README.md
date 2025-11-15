@@ -17,6 +17,17 @@ The goal is to create an intelligent system capable of detecting cars, buses, an
 
 This project supports sustainable mobility by helping optimize traffic flow and reduce fuel wastage, contributing to green technology development.
 
+### 🤖 Why I Chose YOLOv8
+
+I selected YOLOv8 for this project because it is one of the most advanced and efficient object detection models available. It offers real-time detection, high accuracy, and easy customization, which are essential for automotive AI applications.
+Key Reasons:
+
+- Real-time performance – Detects multiple objects instantly, ideal for traffic scenes.
+- High accuracy – Performs well even in crowded or complex environments.
+- Lightweight and fast – Can run efficiently even without a high-end GPU.
+- Easy customization – Supports transfer learning and fine-tuning on custom datasets.
+- Strong community support – Developed by Ultralytics with detailed documentation.
+
 ---
 
 ## 📚 Dataset Description
@@ -191,4 +202,5 @@ Contributions are always welcome! If you spot a bug, have an idea for improvemen
 ---
 
 **Built with ❤️ for Smart Transportation & Urban Planning**
+
 
